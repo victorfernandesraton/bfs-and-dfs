@@ -31,7 +31,7 @@ func TestIsValid(t *testing.T) {
 	}
 	two.AddChildren(three)
 	two.AddChildren(another)
-	res := Dfsexecution(one, &node.Output{})
+	res := DfsExecution(one, &node.Output{})
 
 	if res.LastLevel != 2 {
 		t.Errorf("Not expected index %v", res.LastLevel)
