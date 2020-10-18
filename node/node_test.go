@@ -8,12 +8,16 @@ func TestStruct(t *testing.T) {
 	n := &Node{
 		Value: 12,
 	}
-	if n.IsLeaf() == false {
-		t.Error("isLeaf Not expected")
-	}
-	if n.IsRoot() == false {
-		t.Error("isRoot not expected")
-	}
+	t.Run("expected not leaf", func(t *testing.T) {
+		if n.IsLeaf() == false {
+			t.Error("isLeaf Not expected")
+		}
+	})
+	t.Run("expected not root", func(t *testing.T) {
+		if n.IsRoot() != true {
+			t.Errorf("isRoot not expected got %v", len(n.Parent))
+		}
+	})
 }
 
 func TestAllocation(t *testing.T) {
@@ -23,12 +27,17 @@ func TestAllocation(t *testing.T) {
 	n.AddChildren(&Node{
 		Value: 5,
 	})
-	if n.IsLeaf() == true {
-		t.Error("isLeaf Not expected")
-	}
-	if n.IsRoot() == false {
-		t.Error("isRoot not expected")
-	}
+
+	t.Run("expected leaf", func(t *testing.T) {
+		if n.IsLeaf() == true {
+			t.Error("isLeaf Not expected")
+		}
+	})
+	t.Run("expected not root", func(t *testing.T) {
+		if n.IsRoot() == false {
+			t.Error("isRoot not expected")
+		}
+	})
 }
 
 func TestReference(t *testing.T) {
@@ -39,6 +48,7 @@ func TestReference(t *testing.T) {
 		Value: 3,
 	}
 	n.AddChildren(m)
+
 	if n.IsLeaf() == true {
 		t.Error("n isLeaf Not expected")
 	}

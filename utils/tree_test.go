@@ -20,21 +20,31 @@ func ExpectedValue(t *testing.T) {
 	matrix = append(matrix, []uint8{1, 0, 0, 0})
 
 	tree, err := generateTree(matrix, vlist)
-	if err != nil {
-		t.Errorf("Unexpected error, %s", err)
-	}
-	if tree.Value != 12 {
-		t.Errorf("Unexpected tree root, want 12 have %s", tree.Value)
-	}
-	if tree.Children[0].Value != 1 {
-		t.Errorf("Unexpected tree root, want 1 have %s", tree.Children[0].Value)
-	}
-	if tree.Children[1].Value != "A" {
-		t.Errorf("Unexpected tree root, want A have %s", tree.Children[1].Value)
-	}
-	if tree.Children[0].Children[0].Value != "F" {
-		t.Errorf("Unexpected tree root, want F have %s", tree.Children[0].Children[0].Value)
-	}
+	t.Run("expected error", func(t *testing.T) {
+		if err != nil {
+			t.Errorf("Unexpected error, %s", err)
+		}
+	})
+	t.Run("expected tree root", func(t *testing.T) {
+		if tree.Value != 12 {
+			t.Errorf("Unexpected tree root, want 12 have %s", tree.Value)
+		}
+	})
+	t.Run("expected children for tree rott", func(t *testing.T) {
+		if tree.Children[0].Value != 1 {
+			t.Errorf("Unexpected tree root, want 1 have %s", tree.Children[0].Value)
+		}
+	})
+	t.Run("expected value for children of element tree", func(t *testing.T) {
+		if tree.Children[1].Value != "A" {
+			t.Errorf("Unexpected tree root, want A have %s", tree.Children[1].Value)
+		}
+	})
+	t.Run("expected value (children of children)", func(t *testing.T) {
+		if tree.Children[0].Children[0].Value != "F" {
+			t.Errorf("Unexpected tree root, want F have %s", tree.Children[0].Children[0].Value)
+		}
+	})
 }
 
 func InValidMatrix(t *testing.T) {
