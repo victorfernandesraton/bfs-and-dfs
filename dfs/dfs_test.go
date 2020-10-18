@@ -3,7 +3,7 @@ package dfs
 import (
 	"testing"
 
-	"github.com/victorfernandesraton/grafos/node"
+	"github.com/victorfernandesraton/bfs-and-dfs/node"
 )
 
 func TestIsValid(t *testing.T) {
@@ -31,7 +31,7 @@ func TestIsValid(t *testing.T) {
 	}
 	two.AddChildren(three)
 	two.AddChildren(another)
-	res := DfsExecution(one, &node.Output{})
+	res := Execution(one, &node.Output{})
 
 	if res.LastLevel != 2 {
 		t.Errorf("Not expected index %v", res.LastLevel)

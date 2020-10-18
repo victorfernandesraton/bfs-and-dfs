@@ -1,9 +1,9 @@
 package dfs
 
-import "github.com/victorfernandesraton/grafos/node"
+import "github.com/victorfernandesraton/bfs-and-dfs/node"
 
-// DFsExecution é a função que implementa o algoritimo DFS na estrutura de nós previamente criada
-func DfsExecution(n *node.Node, out *node.Output) *node.Output {
+// Execution é a função que implementa o algoritimo DFS na estrutura de nós previamente criada
+func Execution(n *node.Node, out *node.Output) *node.Output {
 	// Marca o vertice raiz como usado
 	if n.Used == false {
 		n.Used = true
@@ -20,7 +20,7 @@ func DfsExecution(n *node.Node, out *node.Output) *node.Output {
 				// Marca como visitado
 				item.Used = true
 				out.Queue = append(out.Queue, item) // adiciona o vetice raiz cna listga de queues
-				DfsExecution(item, out)
+				Execution(item, out)
 			}
 		}
 	} else if len(n.Parent) > 0 { // Verificação nos vertices pais caso não tenha filho a ser  percorrido
@@ -29,7 +29,7 @@ func DfsExecution(n *node.Node, out *node.Output) *node.Output {
 				// Marca como visitado
 				item.Used = true
 				out.Queue = append(out.Queue, item) // adiciona o vetice raiz cna listga de queues
-				DfsExecution(item, out)
+				Execution(item, out)
 			}
 		}
 	}

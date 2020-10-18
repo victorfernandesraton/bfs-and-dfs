@@ -1,11 +1,9 @@
 package bfs
 
-import (
-	"github.com/victorfernandesraton/grafos/node"
-)
+import "github.com/victorfernandesraton/bfs-and-dfs/node"
 
-// BfsExecution é a função que pega um vertice de uma arvore qualquer e implementa o algoritimo
-func BfsExecution(n *node.Node, out *node.Output) *node.Output {
+// Execution é a função que pega um vertice de uma arvore qualquer e implementa o algoritimo
+func Execution(n *node.Node, out *node.Output) *node.Output {
 	// Marca o vertice raiz como usado
 	if n.Used == false {
 		n.Used = true
@@ -27,7 +25,7 @@ func BfsExecution(n *node.Node, out *node.Output) *node.Output {
 		}
 		// Percorre executando bfs
 		for _, item := range n.Children {
-			BfsExecution(item, out)
+			Execution(item, out)
 		}
 	}
 	// a kista de querys e retornada como saida
