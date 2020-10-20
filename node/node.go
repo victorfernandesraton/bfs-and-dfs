@@ -1,5 +1,9 @@
 package node
 
+import (
+	"fmt"
+)
+
 // Node define a estrutura de um vertice podendo ter childresn, parents e o seu indice
 // OBS: o indice é atribuido ao vertice poois este é usado nos algoritimos de bfs e dfss
 type Node struct {
@@ -14,6 +18,18 @@ type Node struct {
 type Output struct {
 	Queue     []*Node
 	LastLevel uint64
+}
+
+// Print é a implememtação da função de imprimir a queue de forma visual
+func (o *Output) Print() {
+	str := ""
+	for _, item := range o.Queue {
+		str = fmt.Sprintf("%s %s", str, fmt.Sprintf("[%v] : [", item.Value))
+		for _, subItem := range item.Children {
+			str = fmt.Sprintf("%s %s", str, fmt.Sprintf("%v ,", subItem.Value))
+		}
+		str = fmt.Sprintf("%s %s", str, "]")
+	}
 }
 
 // IsLeaf as a function to detect if this elemt is leaf

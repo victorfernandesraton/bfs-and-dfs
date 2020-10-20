@@ -6,7 +6,7 @@ import (
 	"github.com/victorfernandesraton/bfs-and-dfs/node"
 )
 
-func generateTree(matrix [][]uint8, n []*node.Node) (*node.Node, error) {
+func GenerateTree(matrix [][]uint8, n []*node.Node) (*node.Node, error) {
 	if !IsAdjacence(matrix) {
 		return nil, errors.New("Invalid adjacent matrix")
 	}

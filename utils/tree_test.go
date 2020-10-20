@@ -19,7 +19,7 @@ func ExpectedValue(t *testing.T) {
 	matrix = append(matrix, []uint8{0, 1, 0, 0})
 	matrix = append(matrix, []uint8{1, 0, 0, 0})
 
-	tree, err := generateTree(matrix, vlist)
+	tree, err := GenerateTree(matrix, vlist)
 	t.Run("expected error", func(t *testing.T) {
 		if err != nil {
 			t.Errorf("Unexpected error, %s", err)
@@ -62,7 +62,7 @@ func InValidMatrix(t *testing.T) {
 	matrix = append(matrix, []uint8{1, 0, 0, 0})
 	matrix = append(matrix, []uint8{1, 0, 0, 0})
 
-	if _, err := generateTree(matrix, vlist); err.Error() != "Invalid adjacent matrix" {
+	if _, err := GenerateTree(matrix, vlist); err.Error() != "Invalid adjacent matrix" {
 		t.Errorf("Not have expected error, expected :  Invalid adjacent matrix got, %s", err.Error())
 	}
 }
@@ -80,7 +80,7 @@ func InvalidSizeMatrixAndVertex(t *testing.T) {
 	matrix = append(matrix, []uint8{0, 1, 0, 0})
 	matrix = append(matrix, []uint8{1, 0, 0, 0})
 
-	if _, err := generateTree(matrix, vlist); err.Error() != "Invalid adjacent matrix or vector list this is need same length" {
+	if _, err := GenerateTree(matrix, vlist); err.Error() != "Invalid adjacent matrix or vector list this is need same length" {
 		t.Errorf("Not have expected error, expected :  Invalid adjacent matrix or vector list this is need same length got, %s", err.Error())
 	}
 }
